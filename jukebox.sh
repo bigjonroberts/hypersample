@@ -3,17 +3,20 @@
 # validate Nvidia hardware
 lspci | grep -i NVIDIA
 
-# validate Nvidia driver
-
-nvidia-smi -L
-
 # install CUDA driver if needed
 
-sudo apt-get -y install nvidia-cuda-toolkit
+sudo apt-get -y install nvidia-cuda-toolkit openmpi-bin openmpi-common openmpi-doc libopenmpi-dev ubuntu-drivers
 echo 'export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}' >> ~/.bashrc
 exec bash # reload shell
 # following line validates install
 nvcc --version
+
+# validate Nvidia driver
+
+nvidia-smi -L
+
+# install nvidia GPU driver if needed, from 
+sudo apt-get install nvidia-utils-525-server
 
 
 # mount storage
